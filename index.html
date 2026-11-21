@@ -22,11 +22,18 @@
     <section aria-labelledby="story-list-title">
       <h2 id="story-list-title">동화 목록</h2>
       {% if site.books.size > 0 %}
-        <ul class="story-list">
+        <ul class="story-list" role="list">
           {% for book in site.books %}
+            {% assign scene = book.scenes | first %}
+            {% assign image_dir = book.url | prepend: '/assets' %}
             <li>
-              <a href="{{ book.url | relative_url }}">{{ book.title | escape }}</a>
-              <span class="story-author">이야기 창작 · {{ book.author | escape }}</span>
+              <a class="story-link" href="{{ book.url | relative_url }}">
+                <img class="story-thumbnail" src="{{ scene.image | prepend: image_dir | relative_url }}" alt="" width="1536" height="1024" loading="lazy">
+                <span>
+                  <span class="story-title">{{ book.title | escape }}</span>
+                  <span class="story-author">이야기 창작 · {{ book.author | escape }}</span>
+                </span>
+              </a>
             </li>
           {% endfor %}
         </ul>

@@ -53,28 +53,46 @@ main {
 }
 
 .story-list {
-  margin: 0.6rem 0 0;
-  padding-inline-start: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.story-list a {
-  display: inline-block;
-  padding-block: 0.55rem;
+.story-list li + li { border-top: 1px solid #cbbd9f; }
+
+.story-link {
+  display: grid;
+  grid-template-columns: clamp(6rem, 29vw, 9rem) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(0.75rem, 4vw, 1.25rem);
+  padding-block: 0.9rem;
   color: #234672;
+  text-decoration: none;
+}
+
+.story-thumbnail {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.35rem;
+}
+
+.story-title {
   font-weight: 650;
+  text-decoration: underline;
   text-underline-offset: 0.18em;
 }
 
-.story-list a:hover { color: #754b1a; }
+.story-link:hover { color: #754b1a; }
 
-.story-list a:focus-visible {
+.story-link:focus-visible {
   outline: 2px solid #825619;
   outline-offset: 3px;
 }
 
 .story-author {
-  display: inline-block;
-  margin-inline-start: 0.5rem;
+  display: block;
+  margin-top: 0.2rem;
   color: #625540;
   font-size: 0.9rem;
 }
