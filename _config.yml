@@ -1,0 +1,18 @@
+title: 까망동화
+url: https://kkamangstudio.github.io
+baseurl: /donghwa
+
+collections:
+  books:
+    output: true
+    permalink: /books/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: books
+    values:
+      layout: reader
+
+exclude:
+  - README.md
