@@ -17,21 +17,23 @@
   </header>
 
   <main class="shell">
-    <h2 class="shelf-title">그림책</h2>
-    {% for book in site.books %}
-      {% assign cover = book.scenes | first %}
-      {% assign image_dir = book.url | prepend: '/assets' %}
-      <a class="book-card" href="{{ book.url | relative_url }}">
-        <img class="book-cover" src="{{ cover.image | prepend: image_dir | relative_url }}" alt="" width="1536" height="1024">
-        <div class="book-info">
-          <h3>{{ book.title | escape }}</h3>
-          <p>이야기 창작 · {{ book.author | escape }}</p>
-          <span class="read-label">그림책 읽기</span>
-        </div>
-      </a>
-    {% else %}
-      <p>아직 공개된 그림책이 없어요.</p>
-    {% endfor %}
+    <p class="introduction">그림과 함께 읽는 창작 동화를 이곳에 모았어요.</p>
+
+    <section aria-labelledby="story-list-title">
+      <h2 id="story-list-title">동화 목록</h2>
+      {% if site.books.size > 0 %}
+        <ul class="story-list">
+          {% for book in site.books %}
+            <li>
+              <a href="{{ book.url | relative_url }}">{{ book.title | escape }}</a>
+              <span class="story-author">이야기 창작 · {{ book.author | escape }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>아직 공개된 동화가 없어요.</p>
+      {% endif %}
+    </section>
   </main>
 </body>
 </html>
